@@ -1,0 +1,2 @@
+sandbox: http://${honeypot_public_ip}:3389
+shell: ${honeypot_public_ip}

@@ -1,0 +1,100 @@
+version: "2"
+services:
+  shell_service:
+    build:
+      context: ./shell/
+      dockerfile: Dockerfile
+    container_name: shell_service
+    cap_add:
+      - SYS_ADMIN
+    tty: true
+    ports:
+      - "2022:2022"
+  nginx_service:
+    build:
+      context: ./nginx/
+      dockerfile: Dockerfile
+    container_name: nginx_service
+    ports:
+      - "3389:9090"
+    volumes:
+      - web_volume:/var/www/html/
+      - tmp_volume:/tmp/
+      - cgi_volume:/dev/shm/
+      - log_volume:/var/log/nginx/
+    restart: always
+
+  php_service:
+    build:
+      context: ./php/
+      dockerfile: Dockerfile
+    container_name: php_service
+    environment:
+      SERVICE_NAME: php
+    volumes:
+      - web_volume:/var/www/html/
+      - tmp_volume:/tmp/
+      - cgi_volume:/dev/shm/
+    restart: always
+
+  tomcat_service:
+    build:
+      context: ./tomcat/
+      dockerfile: Dockerfile
+    container_name: tomcatservice
+    environment:
+      SERVICE_NAME: jsp
+    volumes:
+      - web_volume:/var/www/html/
+      - tmp_volume:/tmp/
+    restart: always
+
+  proxy_service:
+    build:
+      context: ./proxy/
+      dockerfile: Dockerfile
+    container_name: proxy_service
+    ports:
+      - "10080:80"
+    volumes:
+      - ./proxy-config.yaml:/app/config.yaml
+    restart: always
+
+  mysql_service:
+    image: mysql:8.0.30
+    #build:
+    #  context: ./mysql/
+    #  dockerfile: Dockerfile
+    container_name: mysql_service
+    environment:
+      - MYSQL_ROOT_PASSWORD=wanwanmeixiangdao
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql/mysql_data:/var/lib/mysql:rw
+      - ./mysql/init:/docker-entrypoint-initdb.d/:rw
+    restart: always
+
+  file_service:
+    build:
+      context: ./fileinclude/
+      dockerfile: Dockerfile
+    container_name: file_service
+    ports:
+      - "8888:8888"
+    restart: always
+
+  java_service:
+    build:
+      context: ./java/
+      dockerfile: Dockerfile
+    container_name: java_service
+    ports:
+      - "18080:8080"
+    restart: always
+
+volumes:
+  log_volume:
+  web_volume:
+  tmp_volume:
+  cgi_volume:

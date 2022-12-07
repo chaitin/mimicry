@@ -1,0 +1,34 @@
+listen:
+    addr: 0.0.0.0
+    port: "80"
+    defaultremoteport: "443"
+    defaultscheme: https
+log:
+    level: debug
+simulator:
+    dnslog:
+        enabled: true
+        frequency: 17
+    httplog:
+        enabled: true
+        frequency: 7
+    sqlinjection:
+        dsn: root:wanwanmeixiangdao@(mysql_service:3306)/mydb
+        enabled: true
+        frequency: 3
+    sqlblindinjection:
+        dsn: root:wanwanmeixiangdao@(mysql_service:3306)/mydb
+        enabled: true
+        frequency: 20
+    fileinclude:
+        enabled: true
+        frequency: 5
+        sandbox: http://file_service:8888
+    fastjson:
+        enabled: true
+        frequency: 13
+        sandbox: http://java_service:8080/dataanalysis/json/process
+    rmi:
+        enabled: true
+        frequency: 19
+        sandbox: http://java_service:8080/dataanalysis/rmi/process
