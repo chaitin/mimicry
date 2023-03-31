@@ -18,6 +18,11 @@
 </p>
 <p align="center"> 中文文档 | <a href="README.md">English</a> </p>
 
+## 🏠 工作原理
+
+<p><a href="./docs/mimicry.pdf">Presentation</a> </p>
+<p><a href="https://vimeo.com/813408987">视频</a></p>
+
 ## 🔥 Demo
 
 [![asciicast](https://asciinema.org/a/3WO3x1d4tx4KHb4pwbkBLg5lh.svg)](https://asciinema.org/a/3WO3x1d4tx4KHb4pwbkBLg5lh)
