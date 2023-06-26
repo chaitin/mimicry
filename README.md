@@ -33,12 +33,12 @@
 docker info
 docker-compose version
 ```
-### 2. Install [honeypot service](https://github.com/chaitin/mimicry/tree/master/mimicry/honeypot)
+### 2. Install [honeypot service](https://github.com/chaitin/mimicry/tree/main/honeypot)
 ```
 docker-compose build
 docker-compose up -d
 ```
-### 3. Deploy [deception tool](https://github.com/chaitin/mimicry/tree/master/mimicry/tools) on other machines
+### 3. Deploy [deception tool](https://github.com/chaitin/mimicry/tree/main/tools) on other machines
 ```
 update config.yaml,replace ${honeypot_public_ip} to the public IP of honeypot service
 ```

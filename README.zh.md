@@ -33,12 +33,12 @@
 docker info
 docker-compose version
 ```
-### 2. 安装 [蜜罐服务](https://github.com/chaitin/mimicry/tree/master/mimicry/honeypot)
+### 2. 安装 [蜜罐服务](https://github.com/chaitin/mimicry/tree/main/honeypot)
 ```
 docker-compose build
 docker-compose up -d
 ```
-### 3. 在其它机器上部署 [欺骗工具](https://github.com/chaitin/mimicry/tree/master/mimicry/tools) 
+### 3. 在其它机器上部署 [欺骗工具](https://github.com/chaitin/mimicry/tree/main/tools) 
 ```
 更新 config.yaml,将 ${honeypot_public_ip} 替换为蜜罐服务的公网IP
 ```
